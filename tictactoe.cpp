@@ -5,6 +5,7 @@ using namespace std;
 bool checkXWin(char board[3][3]);
 bool checkOWin(char board[3][3]);
 bool checkTie(char board[3][3]);
+void reset(char board[3][3]);
 
 void printBoard(char board[3][3]) {
   cout << "  1 2 3" << endl;
@@ -18,22 +19,13 @@ int main() {
   char board[3][3];
   char input[2];
   bool playing = true;
-  bool validInput = false;
+  int xwins = 0;
+  int owins = 0;
 
   cout << "Welcome to Tic Tac Toe!" << endl;
   cout << "This is a two player game, where one player is O, and the other is X." << endl;
   cout << "Moves are made by typing a letter (a, b, or c), followed by a number (1, 2, or 3)." << endl;
   cout << endl;
-
-  board[0][0] = ' ';
-  board[0][1] = ' ';
-  board[0][2] = ' ';
-  board[1][0] = ' ';
-  board[1][1] = ' ';
-  board[1][2] = ' ';
-  board[2][0] = ' ';
-  board[2][1] = ' ';
-  board[2][2] = ' ';
   
   printBoard(board);
   cout << endl;
@@ -255,14 +247,23 @@ int main() {
     }
     if (checkXWin(board) == true) {
       cout << "X wins!" << endl;
+      xwins++;
+      cout << endl;
+      cout << "X has won " << xwins << " time(s)." << endl;
+      cout << "O has won " << owins << " time(s)." << endl;
       playing = false;
     }
     if (checkOWin(board) == true) {
       cout << "O wins!" << endl;
+      owins++;
+      cout << "X has won " << xwins << " time(s)." << endl;
+      cout << "O has won " << owins << " time(s)." << endl;
       playing = false;
     }
     if (checkTie(board) == true) {
       cout << "Tie!" << endl;
+      cout << "X has won " << xwins << " time(s)." << endl;
+      cout << "O has won " << owins << " time(s)." << endl;
       playing = false;
     }
   }
@@ -348,4 +349,16 @@ bool checkTie(char board[3][3]) {
     }
   }
   return false;
+}
+
+void reset(char board[3][3]) {
+  board[0][0] = ' ';
+  board[0][1] = ' ';
+  board[0][2] = ' ';
+  board[1][0] = ' ';
+  board[1][1] = ' ';
+  board[1][2] = ' ';
+  board[2][0] = ' ';
+  board[2][1] = ' ';
+  board[2][2] = ' ';
 }
