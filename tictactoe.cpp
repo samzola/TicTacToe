@@ -54,6 +54,7 @@ int main() {
     
     if (input[0] == 'a') { //a1 means top left square
       if (input[1] == '1') {
+	cout << input << endl;
 	if (board[0][0] != 'X' && board[0][0] != 'O') { //if the square is empty
 	  if (turn == 0) { //if it is x's turn
 	    board[0][0] = 'X'; //make an x
@@ -62,7 +63,7 @@ int main() {
 	    turn = 1; //make it o's turn
 	  }
 	  else if (turn == 1) { //if it is o's turn
-	    board[0][0] == 'O'; //make an o
+	    board[0][0] = 'O'; //make an o
 	    printBoard(board); //print the updated board
 	    char input = 'z'; //change input so it doesn't try to move in the same place next turn
 	    turn = 0;
@@ -226,7 +227,7 @@ int main() {
 	}
       }
       else if (input[1] == '3') { //c3 means bottom right square
-	if (board[2][2] != 'X' && board[2][2] != '3') {
+	if (board[2][2] != 'X' && board[2][2] != 'O') {
 	  if (turn == 0) {
 	    board[2][2] = 'X';
 	    printBoard(board);
